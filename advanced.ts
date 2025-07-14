@@ -1,4 +1,4 @@
-class User {
+/* class User {
   protected _firstName: string = '';
   private _lastName: string = '';
 
@@ -65,4 +65,46 @@ class SideDrawerElement extends UIElement {
   }
 
   // ...
+}
+ */
+
+class User {
+  private _firstName: string = "";
+  private _lastName: string = "";
+
+  set firstName(name: string) {
+    if (name.trim() === "") {
+      throw new Error("Invalid name.");
+    }
+    this._firstName = name;
+  }
+
+  set lastName(name: string) {
+    if (name.trim() === "") {
+      throw new Error("Invalid name.");
+    }
+    this._lastName = name;
+  }
+
+  get fullName() {
+    return this._firstName + " " + this._lastName;
+  }
+
+  static eid = "USER";
+}
+
+console.log(User.eid);
+
+const max = new User();
+max.firstName = "Max";
+max.lastName = "test";
+console.log(max.fullName);
+
+class Employee extends User {
+  constructor(public jobTitle: string) {
+    super();
+    super.firstName = 'MaxCola';
+  }
+
+  
 }
