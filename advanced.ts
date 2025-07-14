@@ -69,7 +69,7 @@ class SideDrawerElement extends UIElement {
  */
 
 class User {
-  private _firstName: string = "";
+  protected _firstName: string = "";
   private _lastName: string = "";
 
   set firstName(name: string) {
@@ -103,8 +103,19 @@ console.log(max.fullName);
 class Employee extends User {
   constructor(public jobTitle: string) {
     super();
-    super.firstName = 'MaxCola';
+    super.firstName = "MaxCola";
+    this._firstName = "Protect";
   }
+}
 
-  
+abstract class UIElement {
+  constructor(public identifier: string) {}
+
+  clone(targetLocation: string) {}
+}
+
+class SideDrawerElement extends UIElement {
+  constructor(public identifier: string, public position: "left" | "right") {
+    super(identifier);
+  }
 }
